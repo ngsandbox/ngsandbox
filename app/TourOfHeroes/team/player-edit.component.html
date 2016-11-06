@@ -1,0 +1,51 @@
+<form class="form-horizontal" *ngIf="player" (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="playerFirstName">First name</label>
+        <div class="col-md-6">
+            <input type="text" class="form-control" id="playerFirstName" [(ngModel)]="player.name"
+                   placeholder="First name"
+                   ngModel name="name" required>
+        </div>
+        <span class="col-md-4">{{player.name}}</span>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="playerLastName">Last name</label>
+        <div class="col-md-6">
+            <input type="text" class=" form-control " id="playerLastName" [(ngModel)]="player.lastName"
+                   placeholder="Last name "
+                   ngModel name="lastName" required>
+        </div>
+        <span class="col-md-4">{{player.lastName}}</span>
+    </div>
+    <!--<div class="form-group">-->
+        <!--<label class="col-md-2 control-label" for="birthday">Birthday</label>-->
+        <!--<div class="col-md-6">-->
+            <!--<input type="date" class=" form-control " [(ngModel)]="player.birthday" id="birthday" [value]="" ngModel-->
+                   <!--name="birthday" required value='{{ player.birthday | date:"yyyy-MM-dd" }}'/>-->
+    <!--</div>-->
+    <!--<span class="col-md-4">{{player.birthday | date: 'dd-MMM-yyyy' }}</span>-->
+    <!--</div>-->
+    <div class="form-group">
+        <label class="col-md-2 control-label">Gender</label>
+        <div class="col-md-6">
+            <label class="radio-inline" *ngFor="let g of genders">
+                <input type="radio" [(ngModel)]="player.gender" name="gender" [value]="g"/>
+                {{g}}
+            </label>
+        </div>
+        <span class="col-md-4">{{ player.gender }}</span>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="playerEmail">Email</label>
+        <div class="col-md-6">
+            <input type="email" class=" form-control " id="playerEmail" [(ngModel)]="player.email "
+                   placeholder="Email input"
+                   required ngModel name="email"
+                   pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
+        </div>
+        <span class="col-md-4">{{player.email}}</span>
+    </div>
+    <button class="btn btn-default " [routerLink]="['/team']">Back</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Save</button>
+    <button class="btn btn-default pull-right disabled" (click)="removePlayer()" *ngIf="player._id" [disabled]="true">Delete</button>
+</form>

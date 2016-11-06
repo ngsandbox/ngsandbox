@@ -1,0 +1,29 @@
+.card {
+}
+
+.card .front {
+}
+
+.card .back {
+}
+
+.card div.carousel-caption {
+    top: auto;
+    bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: black;
+    /*-ms-opacity: 0.3;*/
+    opacity: 0.3;
+    width: 100%;
+    left: 0;
+    right: 0;
+    font-weight: bold;
+    /*
+        -webkit-filter: brightness(200%);
+        -moz-filter: brightness(200%);
+        -o-filter: brightness(200%);
+        -ms-filter: brightness(200%);
+        filter: brightness(200%);
+    */
+}

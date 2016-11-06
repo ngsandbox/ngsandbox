@@ -1,0 +1,25 @@
+.votingWdt {
+}
+
+    .votingWdt > .btn:first-child,
+    .votingWdt > .btn:last-child {
+        padding-left: 3px !important;
+        padding-right: 3px !important;
+    }
+
+    .votingWdt > .btn:first-child {
+        padding-right: 0 !important;
+        border-right-width: 0;
+    }
+
+    .votingWdt > .btn.disabled {
+        padding-left: 3px !important;
+        padding-right: 3px !important;
+        border-left-width: 0;
+        border-right-width: 0;
+    }
+
+    .votingWdt > .btn:last-child {
+        padding-left: 0 !important;
+        border-left-width: 0;
+    }

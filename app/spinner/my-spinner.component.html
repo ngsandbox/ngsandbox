@@ -1,0 +1,13 @@
+<div class="btn-group pull-right votingWdt" role="toolbar" (swipeleft)="decrement()" (swiperight)="increment()"
+	(swipedown)="decrement()" (swipeup)="increment()">
+	<button class="btn btn-default" (click)="decrement()">
+        <span class="glyphicon glyphicon-menu-left"></span>
+    </button>
+	<button class="btn btn-default disabled">
+        <span class="glyphicon {{bdgClass}}"></span>
+        <span class="badge">{{counterValue}}</span>
+    </button>
+	<button class="btn btn-default" (click)="increment()">
+        <span class="glyphicon glyphicon-menu-right"></span>
+    </button>
+</div>

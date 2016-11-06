@@ -1,0 +1,13 @@
+{
+  "port": 8000,
+  "files": [
+    "./app/**/*.{html,htm,css,js}",
+    "./components/**/*.{html,htm,css,js}",
+    "./js/**/*.{html,htm,css,js}",
+    "./node_modules/**/*.{html,htm,css,js}",
+    "./*.{html,htm,css,js}",
+    "./index.html"
+
+  ],
+  "server": { "baseDir": "./" }
+}

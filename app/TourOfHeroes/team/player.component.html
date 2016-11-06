@@ -1,0 +1,24 @@
+<div class="container" *ngIf="player">
+    <div class="form-group">
+        <span class="col-md-3 control-label">First name</span>
+        <span class="col-md-9">{{player.name}}</span>
+    </div>
+    <div class="form-group">
+        <span class="col-md-3 control-label">Last name</span>
+        <span class="col-md-9">{{player.lastName}}</span>
+    </div>
+    <div class="form-group">
+        <span class="col-md-3 control-label">Birthday</span>
+        <span class="col-md-9">{{player.birthday | date: 'dd-MMM-yyyy' }}</span>
+    </div>
+    <div class="form-group">
+        <span class="col-md-3 control-label">Gender</span>
+        <span class="col-md-9">{{ player.gender }}</span>
+    </div>
+    <div class="form-group">
+        <span class="col-md-3 control-label">Email</span>
+        <span class="col-md-9">{{player.email}}</span>
+    </div>
+    <button class="btn btn-default" [routerLink]="['/team']">Back</button>
+    <button class="btn btn-default pull-right" (click)="removePlayer()" *ngIf="player._id">Delete</button>
+</div>
