@@ -6,6 +6,16 @@
     <title>ngSandBox</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        (function () {
+            var redirect = sessionStorage.redirectFrom;
+            sessionStorage.removeItem("redirectFrom");
+            if (redirect && redirect != location.href) {
+                history.replaceState(null, null, redirect);
+            }
+        })();
+    </script>
+
     <link rel="stylesheet" href="components/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="components/lang/languages.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -28,17 +38,6 @@
 <script src="dist/build.js"></script>
 
 <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
-<script>
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyAXkSTZ5OUd9xUBvpu9Au232rsFYEd2y_E",
-        authDomain: "devproj-dbd21.firebaseapp.com",
-        databaseURL: "https://devproj-dbd21.firebaseio.com",
-        storageBucket: "devproj-dbd21.appspot.com",
-        messagingSenderId: "470528161968"
-    };
-    firebase.initializeApp(config);
-</script>
 
 </body>
 

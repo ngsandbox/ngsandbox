@@ -1,7 +1,17 @@
-import { Component } from "@angular/core";
-import { GridMemoryService } from "./grid-memory.service";
-import { Utils } from "./../utils";
-export var GridMemoryComponent = (function () {
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var core_1 = require("@angular/core");
+var grid_memory_service_1 = require("./grid-memory.service");
+var utils_1 = require("./../utils");
+var GridMemoryComponent = (function () {
     function GridMemoryComponent(service) {
         this.service = service;
         this.start = false;
@@ -77,13 +87,13 @@ export var GridMemoryComponent = (function () {
     };
     GridMemoryComponent.prototype.calcCardClasses = function () {
         var count = this.service.calcCardColsCount(this.limit);
-        this.cardClasses = Utils.format(GridMemoryComponent.GridCardColumnClasses, count);
+        this.cardClasses = utils_1.Utils.format(GridMemoryComponent.GridCardColumnClasses, count);
     };
     GridMemoryComponent.prototype.setNextFile = function () {
         if (this.restFiles && this.restFiles.length > 0) {
-            var pos = Utils.getRandomInt(0, this.restFiles.length);
+            var pos = utils_1.Utils.getRandomInt(0, this.restFiles.length);
             this.currentFile = this.restFiles[pos];
-            this.question = Utils.format(this.service.questionTemplate, this.currentFile.name);
+            this.question = utils_1.Utils.format(this.service.questionTemplate, this.currentFile.name);
         }
     };
     GridMemoryComponent.prototype.isSelectedFileRight = function (file) {
@@ -97,19 +107,17 @@ export var GridMemoryComponent = (function () {
         this.service.setTimeout(e.value);
     };
     GridMemoryComponent.GridCardColumnClasses = "col-lg-{0} col-md-{0} col-sm-{0} col-xs-{0}";
-    GridMemoryComponent.decorators = [
-        { type: Component, args: [{
-                    moduleId: module.id,
-                    selector: 'my-grid-memory',
-                    templateUrl: 'grid-memory.component.html',
-                    styleUrls: ['grid-memory.component.css'],
-                    providers: [GridMemoryService]
-                },] },
-    ];
-    /** @nocollapse */
-    GridMemoryComponent.ctorParameters = [
-        { type: GridMemoryService, },
-    ];
+    GridMemoryComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            selector: 'my-grid-memory',
+            templateUrl: 'grid-memory.component.html',
+            styleUrls: ['grid-memory.component.css'],
+            providers: [grid_memory_service_1.GridMemoryService]
+        }), 
+        __metadata('design:paramtypes', [grid_memory_service_1.GridMemoryService])
+    ], GridMemoryComponent);
     return GridMemoryComponent;
 }());
+exports.GridMemoryComponent = GridMemoryComponent;
 //# sourceMappingURL=grid-memory.component.js.map

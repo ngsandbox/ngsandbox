@@ -47,5 +47,5 @@
     </div>
     <button class="btn btn-default " [routerLink]="['/team']">Back</button>
     <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Save</button>
-    <button class="btn btn-default pull-right disabled" (click)="removePlayer()" *ngIf="player._id" [disabled]="true">Delete</button>
+    <button class="btn btn-default pull-right" (click)="removePlayer()" *ngIf="player._id">Delete</button>
 </form>

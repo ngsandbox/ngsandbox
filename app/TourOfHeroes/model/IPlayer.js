@@ -1,2 +1,3 @@
-export var Genders = ["Male", "Female"];
+"use strict";
+exports.Genders = ["Male", "Female"];
 //# sourceMappingURL=IPlayer.js.map

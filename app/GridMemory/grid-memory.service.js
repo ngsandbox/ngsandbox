@@ -1,8 +1,18 @@
-import { Injectable } from "@angular/core";
-import { Http } from "@angular/http";
-import "rxjs/add/operator/toPromise";
-import { Utils } from "./../utils";
-export var GridMemoryService = (function () {
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
+require("rxjs/add/operator/toPromise");
+var utils_1 = require("./../utils");
+var GridMemoryService = (function () {
     function GridMemoryService(http) {
         this.http = http;
         this.questionTemplate = "Where is {0}?";
@@ -17,12 +27,12 @@ export var GridMemoryService = (function () {
     };
     GridMemoryService.prototype.proceedFiles = function (files, limit) {
         var result = [];
-        var start = Utils.getRandomInt(0, files.length - limit * 2);
-        var end = Utils.getRandomInt(start + limit * 2, files.length);
+        var start = utils_1.Utils.getRandomInt(0, files.length - limit * 2);
+        var end = utils_1.Utils.getRandomInt(start + limit * 2, files.length);
         var rest = files.slice(start, end);
         //console.log({ start: start, end: end, rest: rest, length: files.length, limit: limit });
         while (rest.length > 1 && result.length < limit) {
-            var i = Utils.getRandomInt(0, rest.length - 1);
+            var i = utils_1.Utils.getRandomInt(0, rest.length - 1);
             var fileInfo = rest[i];
             fileInfo.path = "/components/memory/" + fileInfo.path;
             fileInfo.name = fileInfo.langs[0].value;
@@ -38,16 +48,16 @@ export var GridMemoryService = (function () {
                     (limit < 25) ? 2 : 1;
     };
     GridMemoryService.prototype.setTimeout = function (sec) {
-        Utils.save(GridMemoryService.gridMemSecondsKey, sec);
+        utils_1.Utils.save(GridMemoryService.gridMemSecondsKey, sec);
     };
     GridMemoryService.prototype.getTimeout = function () {
-        return Utils.load(GridMemoryService.gridMemSecondsKey, 10);
+        return utils_1.Utils.load(GridMemoryService.gridMemSecondsKey, 10);
     };
     GridMemoryService.prototype.setLimit = function (limit) {
-        Utils.save(GridMemoryService.gridMemLimitKey, limit);
+        utils_1.Utils.save(GridMemoryService.gridMemLimitKey, limit);
     };
     GridMemoryService.prototype.getLimit = function () {
-        return Utils.load(GridMemoryService.gridMemLimitKey, 6);
+        return utils_1.Utils.load(GridMemoryService.gridMemLimitKey, 6);
     };
     GridMemoryService.handleError = function (error) {
         console.error('An error occurred', error);
@@ -55,13 +65,11 @@ export var GridMemoryService = (function () {
     };
     GridMemoryService.gridMemSecondsKey = "GridMemorySeconds";
     GridMemoryService.gridMemLimitKey = "GridMemoryLimit";
-    GridMemoryService.decorators = [
-        { type: Injectable },
-    ];
-    /** @nocollapse */
-    GridMemoryService.ctorParameters = [
-        { type: Http, },
-    ];
+    GridMemoryService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [http_1.Http])
+    ], GridMemoryService);
     return GridMemoryService;
 }());
+exports.GridMemoryService = GridMemoryService;
 //# sourceMappingURL=grid-memory.service.js.map

@@ -11,7 +11,7 @@ export class TeamService {
     }
 
     getPlayers(): Promise<IPlayer[]> {
-        return this.teamProvider.getPlayers();
+        return this.teamProvider.getPlayers() || [];
     }
 
     savePlayer(player: IPlayer): Promise<Response> {

@@ -1,20 +1,21 @@
-import { RouterModule } from '@angular/router';
-import { TeamComponent } from './team.component';
-import { PlayerDetailComponent } from './team/player.component';
-import { PlayerEditComponent } from './team/player-edit.component';
-import { PlayerNewComponent } from './team/player-new.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { TourOfHeroesComponent } from './tour-of-heroes.component';
+"use strict";
+var router_1 = require('@angular/router');
+var team_component_1 = require('./team.component');
+var player_component_1 = require('./team/player.component');
+var player_edit_component_1 = require('./team/player-edit.component');
+var player_new_component_1 = require('./team/player-new.component');
+var dashboard_component_1 = require('./dashboard/dashboard.component');
+var tour_of_heroes_component_1 = require('./tour-of-heroes.component');
 var TOUR_OF_HEROES_ROUTES = [
     {
-        path: '', component: TourOfHeroesComponent, children: [
-            { path: 'team', component: TeamComponent, pathMatch: 'full' },
-            { path: 'team/dashboard', component: DashboardComponent },
-            { path: 'team/player/new', component: PlayerNewComponent },
-            { path: 'team/player/detail/:id', component: PlayerDetailComponent },
-            { path: 'team/player/edit/:id', component: PlayerEditComponent },
+        path: '', component: tour_of_heroes_component_1.TourOfHeroesComponent, children: [
+            { path: 'team', component: team_component_1.TeamComponent, pathMatch: 'full' },
+            { path: 'team/dashboard', component: dashboard_component_1.DashboardComponent },
+            { path: 'team/player/new', component: player_new_component_1.PlayerNewComponent },
+            { path: 'team/player/detail/:id', component: player_component_1.PlayerDetailComponent },
+            { path: 'team/player/edit/:id', component: player_edit_component_1.PlayerEditComponent },
         ]
     }
 ];
-export var TOUR_OF_HEROES_ROUTING = RouterModule.forChild(TOUR_OF_HEROES_ROUTES);
+exports.TOUR_OF_HEROES_ROUTING = router_1.RouterModule.forChild(TOUR_OF_HEROES_ROUTES);
 //# sourceMappingURL=tour-of-heroes.routing.js.map

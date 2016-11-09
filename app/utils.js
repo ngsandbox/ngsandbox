@@ -1,5 +1,6 @@
+"use strict";
 var MY_NG_SANDBOX_COOKIE_KEY = "MY_NG_SANDBOX_OPTIONS";
-export var Utils = (function () {
+var Utils = (function () {
     function Utils() {
     }
     Utils.getRandomInt = function (min, max) {
@@ -49,4 +50,5 @@ export var Utils = (function () {
     };
     return Utils;
 }());
+exports.Utils = Utils;
 //# sourceMappingURL=utils.js.map

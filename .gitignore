@@ -35,3 +35,18 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+.idea/
+
+app/**/*.js.map
+app/**/*.js
+server/**/*.js.map
+server/**/*.js
+components/bootstrap
+components/jquery
+aot/app
+aot/components
+aot/dist
+aot/js
+aot/node_modules
+aot/**/*.js.map
+aot/**/*.js
