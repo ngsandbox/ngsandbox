@@ -26,24 +26,34 @@ export class TeamFirebaseProvider extends TeamProvider {
         messagingSenderId: "470528161968"
     };
 
-    dbRef: any = firebase.database().ref();
-    playersRef: any = firebase.database().ref("players");
-    childPlayersRef: any = this.dbRef.child('players');
+    playersRef: any = null;
 
+
+    get firebaseDb(): any {
+        if (!firebase.apps || !firebase.apps.length) {
+            console.log("Firebase initialization", firebase.apps);
+            firebase.initializeApp(this.config);
+        }
+
+        return firebase.database().ref();
+    }
+
+    get childPlayersRef(): any {
+        if (!this.playersRef) {
+            this.playersRef = this.firebaseDb.child('players');
+        }
+        return this.playersRef;
+    }
 
     constructor() {
         super();
-        console.log("Firebase initialization", firebase.apps);
-        if (!firebase.apps || !firebase.apps.length) {
-            firebase.initializeApp(this.config);
-        }
     }
 
     getPlayers(): Promise<IPlayer[]> {
         return this.childPlayersRef.once('value').then((snap: any) => {
             let res: IPlayer[] = [];
             let vals: any = snap.val();
-            if(vals) {
+            if (vals) {
                 Object.keys(vals).forEach((key: any) => {
                     res.push(this.parseFBPlayer(key, vals[key]));
                 });
@@ -68,11 +78,19 @@ export class TeamFirebaseProvider extends TeamProvider {
 
     removePlayer(id: any): Promise<Response> {
         var ref = this.childPlayersRef;
-        return ref.child(id).once("value", function (snapshot: any) {
+        var result = Promise.resolve<Response>(null);
+
+        ref.child(id).once("value", function (snapshot: any) {
             var updates = {};
             updates[snapshot.key] = null;
-            ref.update(updates).then(r => console.log("Player removed with id: ", r));
-        });
+            console.log("Player fetched with id: ", snapshot.key);
+            ref.update(updates).then((r: any) => {
+                console.log("Player removed with id: ", snapshot.key);
+                result.then((p: any) => r);
+            }).catch((e: any) => result.catch((re: any) => e));
+        }).catch((e: any) => result.catch((re: any) => e));
+
+        return result;
     }
 
     getPlayer(id: any): Promise<IPlayer> {

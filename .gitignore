@@ -41,8 +41,8 @@ app/**/*.js.map
 app/**/*.js
 server/**/*.js.map
 server/**/*.js
-components/bootstrap
-components/jquery
+js
+
 aot/app
 aot/components
 aot/dist

@@ -12,7 +12,6 @@ import {SbRouterService} from "../../nav/sb-router.service";
 })
 export class PlayerNewComponent implements OnInit {
 
-    //birthday: moment.Moment;
     genders: String[] = Genders;
 
     protected get getTeamService(): TeamService {

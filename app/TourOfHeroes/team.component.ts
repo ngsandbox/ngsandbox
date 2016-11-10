@@ -19,7 +19,7 @@ export class TeamComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.teamService.getPlayers().then(players =>this.team = players);
+        this.teamService.getPlayers().then(players =>this.team = players || []);
     }
 
     addPlayer() {

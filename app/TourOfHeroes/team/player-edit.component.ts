@@ -33,7 +33,6 @@ export class PlayerEditComponent extends PlayerNewComponent implements OnDestroy
         if (id) {
             this.getTeamService.getPlayer(id).then(player => {
                 this.player = player;
-                //this.birthday = moment(this.player.birthday);
             });
         }
     }

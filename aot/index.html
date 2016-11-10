@@ -8,18 +8,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script>
         (function () {
-            var redirect = sessionStorage.redirectFrom;
-            sessionStorage.removeItem("redirectFrom");
-            if (redirect && redirect != location.href) {
-                history.replaceState(null, null, redirect);
+            if (typeof sessionStorage !== "undefined" && sessionStorage.redirectFrom) {
+                var redirect = sessionStorage.redirectFrom;
+                sessionStorage.removeItem("redirectFrom");
+                if (redirect && redirect != location.href) {
+                    history.replaceState(null, null, redirect);
+                }
             }
         })();
     </script>
 
-    <link rel="stylesheet" href="components/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="js/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="components/lang/languages.min.css">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all">
+    <!--<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all">-->
     <!-- 1. Load libraries -->
     <script src="js/hammerjs/hammer.min.js"></script>
     <!-- Polyfill(s) for older browsers -->
@@ -34,7 +36,7 @@
 <my-app>Loading...</my-app>
 <script src="js/jquery/jquery.min.js"></script>
 <script src="components/bootstrap/js/bootstrap.min.js"></script>
-<script src="js/jquery/jquery.cookie.js"></script>
+<script src="js/jquery.cookie.js"></script>
 <script src="dist/build.js"></script>
 
 <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
