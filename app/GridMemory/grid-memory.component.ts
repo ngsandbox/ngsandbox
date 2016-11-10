@@ -35,6 +35,8 @@ export class GridMemoryComponent implements OnInit {
         }
 
         this.start = false;
+        this.limit = this.service.getLimit();
+        this.seconds = this.service.getTimeout();
         this.service.getFiles(this.limit).then(f => this.loadData(f));
     }
 
@@ -50,7 +52,6 @@ export class GridMemoryComponent implements OnInit {
         this.files = f.slice();
         this.restFiles = f;
         this.currentFile = null;
-        this.calcCardClasses();
         this.limit = this.service.getLimit();
         this.seconds = this.service.getTimeout();
         this.countSuc = this.countErr = 0;
@@ -59,6 +60,7 @@ export class GridMemoryComponent implements OnInit {
             this.start = true;
             this.setNextFile();
         }, this.seconds * 1000);
+        this.calcCardClasses();
     }
 
     switchAreas(close: boolean) {

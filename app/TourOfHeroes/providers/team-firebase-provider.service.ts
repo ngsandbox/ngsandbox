@@ -1,17 +1,7 @@
-/**
- * Created by Vasilenko on 05-Nov-16.
- */
-
 import {Injectable} from "@angular/core";
 import {Response} from "@angular/http";
 import {TeamProvider} from "./team-provider.service";
 import {IPlayer} from "../model/IPlayer";
-
-// import * as fr from "firebase/firebase";
-// import firebase = fr.firebase;
-// import DbReference = firebase.database.Reference;
-// import DataSnapshot = firebase.database.DataSnapshot;
-
 
 declare var firebase: any;
 
@@ -76,21 +66,17 @@ export class TeamFirebaseProvider extends TeamProvider {
         return playerRef.catch((err: Error) => this.handleError(err));
     }
 
-    removePlayer(id: any): Promise<Response> {
+    removePlayer(id: any): Promise<any> {
         var ref = this.childPlayersRef;
-        var result = Promise.resolve<Response>(null);
-
-        ref.child(id).once("value", function (snapshot: any) {
-            var updates = {};
-            updates[snapshot.key] = null;
-            console.log("Player fetched with id: ", snapshot.key);
-            ref.update(updates).then((r: any) => {
-                console.log("Player removed with id: ", snapshot.key);
-                result.then((p: any) => r);
-            }).catch((e: any) => result.catch((re: any) => e));
-        }).catch((e: any) => result.catch((re: any) => e));
-
-        return result;
+        return new Promise<any>((resolve, reject) => {
+            ref.child(id).once("value", function (snapshot: any) {
+                var updates = {};
+                updates[snapshot.key] = null;
+                ref.update(updates).then((r: any) => {
+                    resolve(r);
+                }).catch((e: any) => reject(e));
+            }).catch((e: any) => reject(e));
+        });
     }
 
     getPlayer(id: any): Promise<IPlayer> {

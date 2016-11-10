@@ -25,7 +25,7 @@ export class Utils {
 
     static save(name: string, value: any) {
         let options = {};
-        let cookie = $.cookie(MY_NG_SANDBOX_COOKIE_KEY);
+        let cookie = localStorage.getItem(MY_NG_SANDBOX_COOKIE_KEY);
         if (cookie) {
             cookie = JSON.parse(cookie);
             if (cookie) {
@@ -34,11 +34,11 @@ export class Utils {
         }
 
         options[name] = value;
-        $.cookie(MY_NG_SANDBOX_COOKIE_KEY, JSON.stringify(options));
+        localStorage.setItem(MY_NG_SANDBOX_COOKIE_KEY, JSON.stringify(options));
     }
 
     static load(name: string, defVal: any) {
-        let cook = $.cookie(MY_NG_SANDBOX_COOKIE_KEY);
+        let cook = localStorage.getItem(MY_NG_SANDBOX_COOKIE_KEY);
         if (cook) {
             let options = JSON.parse(cook);
             if (options) {

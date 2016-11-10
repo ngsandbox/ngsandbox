@@ -23,7 +23,7 @@
 	</div>
 	<div class="row" style="text-align: center;">
 		<div class="carousel slide card" data-ride="carousel" [ngClass]="cardClasses" *ngFor="let file of files"
-			(click)="flipCard(file)">
+			(click)="flipCard(file)" (touch)="flipCard(file)">
 			<div class="carousel-inner  img-thumbnail face front" role="listbox" [ngClass]="{hidden: !file.isFront}">
 				<div class="item" [ngClass]="{active: file.isFront}">
 					<img [src]="file.path" alt="{{file.name}}" title="{{file.name}}" class="img-responsive" />
