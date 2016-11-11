@@ -6,8 +6,8 @@ import {AppComponent} from "./app.component";
 import {APP_ROUTING} from "./app.routes";
 import {HomeComponent} from "./home/home.component";
 import {NavComponent} from "./nav/nav.component";
-import {TourOfHeroesModule} from "./TourOfHeroes/tour-of-heroes.module";
-import {GridMemoryComponent} from "./GridMemory/grid-memory.component";
+import {TourOfHeroesModule} from "./tour-of-heroes/tour-of-heroes.module";
+import {GridMemoryComponent} from "./grid-memory/grid-memory.component";
 import {MySpinner} from "./spinner/my-spinner.component";
 
 @NgModule({

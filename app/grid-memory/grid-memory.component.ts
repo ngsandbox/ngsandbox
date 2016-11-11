@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {FileInfo} from "./models/FileInfo";
+import {FileInfo} from "./models/file-info";
 import {GridMemoryService} from "./grid-memory.service";
 import {Utils} from "./../utils";
 

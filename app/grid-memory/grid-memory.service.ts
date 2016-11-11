@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
-import {FileInfo} from "./models/FileInfo";
+import {FileInfo} from "./models/file-info";
 import "rxjs/add/operator/toPromise";
 import {Utils} from "./../utils";
 

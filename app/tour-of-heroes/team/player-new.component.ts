@@ -12,7 +12,8 @@ import {SbRouterService} from "../../nav/sb-router.service";
 })
 export class PlayerNewComponent implements OnInit {
 
-    genders: String[] = Genders;
+    genders: String[] = Genders
+    disabled: boolean = false;
 
     protected get getTeamService(): TeamService {
         return this.teamService;
@@ -34,7 +35,9 @@ export class PlayerNewComponent implements OnInit {
     }
 
     onSubmit(form: NgForm) {
-        this.teamService.savePlayer(this.player).then(r => this.navService.gotoTeam());
+        this.disabled = true;
+        this.teamService.savePlayer(this.player).then((r: any) => this.navService.gotoTeam())
+            .catch((err: any) => this.disabled = false);
     }
 
     removePlayer() {

@@ -1,5 +1,5 @@
 import * as mongoose from "mongoose";
-import { IPlayer, Genders } from "../../app/TourOfHeroes/model/IPlayer"
+import { IPlayer, Genders } from "../../app/tour-of-heroes/model/IPlayer"
 
 interface IPlayerModel extends IPlayer, mongoose.Document { }
 

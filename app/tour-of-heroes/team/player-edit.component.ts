@@ -38,6 +38,8 @@ export class PlayerEditComponent extends PlayerNewComponent implements OnDestroy
     }
 
     removePlayer() {
-        this.getTeamService.removePlayer(this.player._id).then(r=> this.getNavService.gotoTeam());
+        this.disabled = true;
+        this.getTeamService.removePlayer(this.player._id).then(r=> this.getNavService.gotoTeam())
+            .catch((err: any) => this.disabled = false);
     }
 }

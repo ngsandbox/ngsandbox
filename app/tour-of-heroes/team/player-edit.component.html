@@ -1,4 +1,5 @@
-<form class="form-horizontal" *ngIf="player" (ngSubmit)="onSubmit(f)" #f="ngForm">
+<form class="form-horizontal" *ngIf="player"
+      (ngSubmit)="onSubmit(f)" #f="ngForm">
     <div class="form-group">
         <label class="col-md-2 control-label" for="playerFirstName">First name</label>
         <div class="col-md-6">
@@ -18,10 +19,10 @@
         <span class="col-md-4">{{player.lastName}}</span>
     </div>
     <!--<div class="form-group">-->
-        <!--<label class="col-md-2 control-label" for="birthday">Birthday</label>-->
-        <!--<div class="col-md-6">-->
-            <!--<input type="date" class=" form-control " [(ngModel)]="player.birthday" id="birthday" [value]="" ngModel-->
-                   <!--name="birthday" required value='{{ player.birthday | date:"yyyy-MM-dd" }}'/>-->
+    <!--<label class="col-md-2 control-label" for="birthday">Birthday</label>-->
+    <!--<div class="col-md-6">-->
+    <!--<input type="date" class=" form-control " [(ngModel)]="player.birthday" id="birthday" [value]="" ngModel-->
+    <!--name="birthday" required value='{{ player.birthday | date:"yyyy-MM-dd" }}'/>-->
     <!--</div>-->
     <!--<span class="col-md-4">{{player.birthday | date: 'dd-MMM-yyyy' }}</span>-->
     <!--</div>-->
@@ -46,6 +47,6 @@
         <span class="col-md-4">{{player.email}}</span>
     </div>
     <button class="btn btn-default " [routerLink]="['/team']">Back</button>
-    <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Save</button>
-    <button class="btn btn-default pull-right" (click)="removePlayer()" *ngIf="player._id">Delete</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!f.valid || disabled">Save</button>
+    <button class="btn btn-default pull-right" [disabled]="disabled" (click)="removePlayer()" *ngIf="player._id">Delete</button>
 </form>

@@ -1,7 +1,3 @@
-export enum FileState {
-    front,
-    back
-}
 export class Lang {
     name: string;
     value: string;

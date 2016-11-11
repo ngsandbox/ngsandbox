@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import {TeamService} from './TourOfHeroes/services/team.service'
-import {TeamFirebaseProvider} from "./TourOfHeroes/providers/team-firebase-provider.service";
-import {TeamProvider} from "./TourOfHeroes/providers/team-provider.service";
+import {TeamService} from './tour-of-heroes/services/team.service'
+import {TeamFirebaseProvider} from "./tour-of-heroes/providers/team-firebase-provider.service";
+import {TeamProvider} from "./tour-of-heroes/providers/team-provider.service";
 import {SbRouterService} from "./nav/sb-router.service";
 
 @Component({
