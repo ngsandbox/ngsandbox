@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from "@angular/core";
 import {NgForm} from "@angular/forms";
 import {TeamService} from "../services/team.service";
 import {IPlayer, Genders} from "../model/IPlayer";
-import {SbRouterService} from "../../nav/sb-router.service";
+import {SbRouterService} from "../../../nav/sb-router.service";
 
 @Component({
     moduleId: module.id,

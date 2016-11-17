@@ -6,9 +6,11 @@ import {AppComponent} from "./app.component";
 import {APP_ROUTING} from "./app.routes";
 import {HomeComponent} from "./home/home.component";
 import {NavComponent} from "./nav/nav.component";
-import {TourOfHeroesModule} from "./tour-of-heroes/tour-of-heroes.module";
-import {GridMemoryComponent} from "./grid-memory/grid-memory.component";
+import {TourOfHeroesModule} from "./subapps/tour-of-heroes/tour-of-heroes.module";
+import {GridMemoryComponent} from "./subapps/grid-memory/grid-memory.component";
 import {MySpinner} from "./spinner/my-spinner.component";
+import {Puzzle2048Component} from "./subapps/2048/puzzle-2048.component";
+import {TilesComponent} from "./subapps/2048/tiles.component";
 
 @NgModule({
     declarations: [
@@ -16,7 +18,9 @@ import {MySpinner} from "./spinner/my-spinner.component";
         NavComponent,
         HomeComponent,
         MySpinner,
-        GridMemoryComponent],
+        GridMemoryComponent,
+        Puzzle2048Component,
+        TilesComponent],
     imports: [
         HttpModule,
         BrowserModule,

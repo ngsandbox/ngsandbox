@@ -1,8 +1,8 @@
 import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
-import {FileInfo} from "./models/file-info";
+import {FileInfo} from "./models/file-info.model";
 import "rxjs/add/operator/toPromise";
-import {Utils} from "./../utils";
+import {Utils} from "./../../utils";
 
 @Injectable()
 export class GridMemoryService {

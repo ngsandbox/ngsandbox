@@ -26,6 +26,7 @@ function copyDataFiles(pathDest) {
         {file: 'node_modules/jquery.cookie/jquery.cookie.js', dest: "js/"},
         {file: 'styles.css', dest: ""},
         {dir: 'node_modules/bootstrap/dist/', dest: "js/bootstrap/"},
+        {dir: 'node_modules/modernizr/bin/', dest: "js/"},
         {dir: 'node_modules/jquery/dist/', dest: "js/jquery/"}
     ];
 
@@ -43,7 +44,7 @@ function copyDataFiles(pathDest) {
             var options = {
                 overwrite: true,
                 expand: true
-            }
+            };
             copy(f.dir, pathDest + f.dest, options, function (err) {
                 if (err) {
                     console.error(err);

@@ -1,0 +1,51 @@
+<div class="container">
+    <table style="width: 100%;">
+        <tbody>
+        <tr>
+            <td colspan="2">
+                <div class="container">
+                    <button class="btn btn-sm btn-default" (click)="onClickReload()">
+                        <span class="glyphicon glyphicon-refresh"></span>
+                    </button>
+                    <span class="text-primary">{{question}}</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="carousel slide card" data-ride="carousel" [ngClass]="cardClasses" *ngFor="let file of files"
+                     (click)="flipCard(file)" (touch)="flipCard(file)">
+                    <div class="carousel-inner  img-thumbnail face front" role="listbox"
+                         [ngClass]="{hidden: !file.isFront}">
+                        <div class="item" [ngClass]="{active: file.isFront}">
+                            <img [src]="file.path" alt="{{file.name}}" title="{{file.name}}" class="img-responsive"/>
+                            <div class="carousel-caption">{{file.name}}</div>
+                        </div>
+                    </div>
+                    <div class="carousel-inner img-thumbnail face back" [ngClass]="{hidden: file.isFront}">
+                        <div class="item" [ngClass]="{active: !file.isFront}">
+                            <img src="/components/cover.jpg" alt="{{file.name}}" title="{{file.name}}"
+                                 class="img-responsive"/>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td style="width: 75px;" rowspan="2" class="media-right ">
+                <div class="btn-group-vertical center-block" role="group">
+                    <button class="btn btn-sm btn-success disabled">
+                        <span class="label label-success badge">{{countSuc}}</span>
+                    </button>
+                    <button class="btn btn-sm btn-danger disabled">
+                        <span class="label label-danger badge">{{countErr}}</span>
+                    </button>
+                </div>
+                <div mySpinner [counterValue]="limit" (counterChange)="onChangeLimit($event)"
+                     bdgClass="glyphicon-th"></div>
+                <div mySpinner [counterValue]="seconds" (counterChange)="onChangeTimeout($event)"
+                     bdgClass="glyphicon-time"></div>
+                <!--</div>-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,13 +1,16 @@
-<div class="btn-group pull-right votingWdt" role="toolbar" (swipeleft)="decrement()" (swiperight)="increment()"
-	(swipedown)="decrement()" (swipeup)="increment()">
-	<button class="btn btn-default" (click)="decrement()">
-        <span class="glyphicon glyphicon-menu-left"></span>
+<div class="btn-group-vertical votingWdt center-block" role="group" (swipedown)="decrement()" (swipeup)="increment()">
+    <button class="btn btn-sm btn-default" (click)="increment()"
+            [ngClass]="{disabled: counterValue >= maxValue}"
+            [disabled]="counterValue >= maxValue">
+        <span class="glyphicon glyphicon-menu-up"></span>
     </button>
-	<button class="btn btn-default disabled">
+    <button class="btn btn-sm btn-default disabled">
         <span class="glyphicon {{bdgClass}}"></span>
         <span class="badge">{{counterValue}}</span>
     </button>
-	<button class="btn btn-default" (click)="increment()">
-        <span class="glyphicon glyphicon-menu-right"></span>
+    <button class="btn btn-sm btn-default" (click)="decrement()"
+            [ngClass]="{disabled: counterValue <= minValue}"
+            [disabled]="counterValue <= minValue">
+        <span class="glyphicon glyphicon-menu-down"></span>
     </button>
 </div>

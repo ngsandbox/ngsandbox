@@ -1,14 +1,16 @@
 import {Component, OnInit} from "@angular/core";
-import {FileInfo} from "./models/file-info";
+import {FileInfo} from "./models/file-info.model";
 import {GridMemoryService} from "./grid-memory.service";
-import {Utils} from "./../utils";
+import {Utils} from "./../../utils";
+
+const CAPTION: string = "Try to remember the sequence of pictures below";
 
 @Component({
-    moduleId: module.id,
-    selector: 'my-grid-memory',
-    templateUrl: 'grid-memory.component.html',
-    styleUrls: ['grid-memory.component.css'],
-    providers: [GridMemoryService]
+moduleId: module.id,
+selector: 'my-grid-memory',
+templateUrl: 'grid-memory.component.html',
+styleUrls: ['grid-memory.component.css'],
+providers: [GridMemoryService]
 })
 export class GridMemoryComponent implements OnInit {
     private static GridCardColumnClasses: string = "col-lg-{0} col-md-{0} col-sm-{0} col-xs-{0}";
@@ -23,7 +25,7 @@ export class GridMemoryComponent implements OnInit {
     countErr: number = 0;
     limit: number = 6;
     seconds: number = 10;
-    question: string = "";
+    question: string = CAPTION;
 
     constructor(private service: GridMemoryService) {
     }
@@ -34,6 +36,7 @@ export class GridMemoryComponent implements OnInit {
             this.startTimeoutHndl = null;
         }
 
+        this.question = CAPTION;
         this.start = false;
         this.limit = this.service.getLimit();
         this.seconds = this.service.getTimeout();

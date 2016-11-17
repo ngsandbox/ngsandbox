@@ -1,7 +1,7 @@
 import {Component, OnDestroy} from "@angular/core";
 import {TeamService} from "../services/team.service";
 import {PlayerNewComponent} from "./player-new.component";
-import {SbRouterService} from "../../nav/sb-router.service";
+import {SbRouterService} from "../../../nav/sb-router.service";
 import {ActivatedRoute} from "@angular/router";
 
 
