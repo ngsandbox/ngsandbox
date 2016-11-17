@@ -1,0 +1,14 @@
+<div *ngFor="let tile of game.tiles; trackBy: trackByIndex;" data-ride="carousel"
+     [ngClass]="['carousel', 'slide', 'tile', colClass]">
+    <div class="carousel-inner img-thumbnail" [ngClass]="tile?.bgStatus"
+         style="padding: 10px;" role="listbox">
+        <div class="item active">
+            <img src="/components/cover.jpg" class="img-responsive"/>
+            <div class="carousel-caption">
+                <h1 [ngClass]="{'text-primary': tile?.merged, 'text-success': tile?.value >= game.winningValue}">
+                    {{tile?.value}}
+                </h1>
+            </div>
+        </div>
+    </div>
+</div>
