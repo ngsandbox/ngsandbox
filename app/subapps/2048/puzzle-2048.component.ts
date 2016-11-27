@@ -12,7 +12,6 @@ import {PuzzleKeyboardService} from "./services/puzzle-keyboard.service";
 })
 export class Puzzle2048Component implements OnInit, OnDestroy {
     globalListenFunc: Function;
-    cardClasses: string = "col-lg-3";
 
     constructor(public game: GameService,
                 private renderer: Renderer) {
@@ -28,28 +27,42 @@ export class Puzzle2048Component implements OnInit, OnDestroy {
         this.globalListenFunc = this.renderer.listenGlobal('document', 'keydown', (event: any) => {
             var key = PuzzleKeyboardService.getEventKeyCode(event.keyCode);
             if (key) {
+                event.preventDefault();
                 self.game.move(key);
             }
         });
     }
 
-    goUp() {
+    goUp(event: any) {
+        event.preventDefault();
         this.game.move(PuzzleKeyboardService.UP);
     }
 
-    goDown() {
+    goDown(event: any) {
+        event.preventDefault();
         this.game.move(PuzzleKeyboardService.DOWN);
     }
 
-    goLeft() {
+    goLeft(event: any) {
+        event.preventDefault();
         this.game.move(PuzzleKeyboardService.LEFT);
     }
 
-    goRight() {
+    goRight(event: any) {
+        event.preventDefault();
         this.game.move(PuzzleKeyboardService.RIGHT);
     }
 
     ngOnDestroy() {
+        event.preventDefault();
         this.globalListenFunc();
+    }
+
+    onChangeSize(e: any) {
+        if(e.value < this.game.gameSize){
+            this.game.decSize();
+        } else{
+            this.game.incSize();
+        }
     }
 }

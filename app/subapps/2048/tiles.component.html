@@ -1,5 +1,5 @@
 <div *ngFor="let tile of game.tiles; trackBy: trackByIndex;" data-ride="carousel"
-     [ngClass]="['carousel', 'slide', 'tile', colClass]">
+     [ngClass]="['carousel', 'slide', 'tile', game.colClass]">
     <div class="carousel-inner img-thumbnail" [ngClass]="tile?.bgStatus"
          style="padding: 10px;" role="listbox">
         <div class="item active">

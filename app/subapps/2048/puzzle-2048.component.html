@@ -1,36 +1,34 @@
-<div class="container-fluid">
+<div class="container">
     <table style="width: 100%;">
         <tbody>
         <tr>
             <td colspan="2">
                 <div class="container">
-                    <button class="btn btn-sm btn-default" (click)="newGame()">
-                        <span class="glyphicon glyphicon-refresh"></span>
-                        New game
-                    </button>
-                    <span *ngIf="game.gameState == 0" class="text-primary">
-                        Use your <strong>arrow keys</strong> to move the tiles. When two
-        tiles with the same number touch, they <strong>merge into one!</strong>
-                    </span>
-                    <span *ngIf="game.gameState == 1" class="text-success">
+                    <p *ngIf="game.gameState == 0" class="bg-info">
+                        Use your <span class="glyphicon glyphicon-move"></span> arrow keys to merge equal tiles.
+                    </p>
+                    <p *ngIf="game.gameState == 1" class="bg-success">
                         You win!
-                    </span>
-                    <span *ngIf="game.gameState == 2" class="text-danger">
+                    </p>
+                    <p *ngIf="game.gameState == 2" class="bg-danger">
                         It looks like there is nothing you can do, except, maybe, start the game again...
-                    </span>
+                    </p>
                 </div>
             </td>
         </tr>
         <tr>
             <td>
                 <div>
-                    <div class="container" myTiles2048 (swipedown)="goDown()" (swipeup)="goUp()" (swipeleft)="goLeft()"
-                         (swiperight)="goRight">
+                    <div class="container-fluid" myTiles2048 (swipedown)="goDown($event)" (swipeup)="goUp($event)"
+                         (swipeleft)="goLeft($event)" (swiperight)="goRight($event)">
                     </div>
                 </div>
             </td>
             <td style="width: 75px;" rowspan="2" class="media-right ">
                 <div class="btn-group-vertical center-block" role="group">
+                    <button class="btn btn-sm btn-default" style="display: inline;" (click)="newGame()">
+                        <span class="glyphicon glyphicon-refresh"></span>
+                    </button>
                     <button class="btn btn-sm btn-primary disabled">
                         <span class="label label-primary badge">{{game.currentScore}}</span>
                     </button>
@@ -38,8 +36,8 @@
                         <span class="label label-success badge">{{game.highScore}}</span>
                     </button>
                 </div>
-                <!--<div mySpinner [counterValue]="limit" (counterChange)="onChangeLimit($event)"-->
-                <!--bdgClass="glyphicon-th"></div>-->
+                <div mySpinner [counterValue]="game.gameSize" [minValue]="2" [maxValue]="6"
+                     (counterChange)="onChangeSize($event)" bdgClass="glyphicon-th"></div>
                 <!--<div mySpinner [counterValue]="seconds" (counterChange)="onChangeTimeout($event)"-->
                 <!--bdgClass="glyphicon-time"></div>-->
             </td>

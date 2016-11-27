@@ -8,7 +8,6 @@ import {GameService} from "./services/game-manager.service";
 })
 export class TilesComponent {
 
-    colClass: String = "col-lg-3";
 
     constructor(public game: GameService) {
     }

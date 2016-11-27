@@ -50,3 +50,9 @@ aot/js
 aot/node_modules
 aot/**/*.js.map
 aot/**/*.js
+
+_test-output
+e2e/app.e2e-spec.js
+e2e/app.e2e-spec.js.map
+e2e/puzzle-2048.e2e-spec.js
+e2e/puzzle-2048.e2e-spec.js.map

@@ -6,6 +6,7 @@ import {Puzzle2048Service} from "./puzzle-2048.service";
 import {Position} from "../models/position.model";
 import {Tile} from "../models/tile.model";
 import {GameState} from "../models/game-state.enum";
+import {Utils} from "../../../utils";
 
 @Injectable()
 export class GameService {
@@ -16,11 +17,15 @@ export class GameService {
     gameState: number = 0;
     currentScore: number = 0;
     highScore: number = 0;
+    colClass: String = "col-lg-3 col-md-3 col-sm-3 col-xs-3";
 
     constructor(private puzzleService: Puzzle2048Service) {
-        this.tiles = this.puzzleService.tiles;
-        this.gameSize = this.puzzleService.getSize();
         this.reinit();
+    }
+
+    setSize(size: number) {
+        this.gameSize = size;
+        this.puzzleService.saveSize(size);
     }
 
     getHighScore(): number {
@@ -30,7 +35,11 @@ export class GameService {
     reinit() {
         this.gameState = GameState.None;
         this.currentScore = 0;
+        this.gameSize = this.puzzleService.loadSize();
         this.highScore = this.getHighScore();
+        this.tiles = this.puzzleService.tiles;
+        var limit = this.calcTileStyleLimit();
+        this.colClass = Utils.format("col-lg-{0} col-md-{0} col-sm-{0} col-xs-{0}", limit);
     }
 
 
@@ -40,15 +49,13 @@ export class GameService {
         this.reinit();
     }
 
-    /*
+    /**
      * The game loop
      *
-     * Inside here, we'll run every 'interesting'
-     * event (interesting events are listed in the Keyboard service)
+     * Inside here, we'll run every 'interesting' event (interesting events are listed in the Keyboard service)
      * For every event, we'll:
      *  1. look up the appropriate vector
-     *  2. find the furthest possible locations for each tile and 
-     *     the next tile over
+     *  2. find the furthest possible locations for each tile and the next tile over
      *  3. find any spots that can be 'merged'
      *    a. if we find a spot that can be merged:
      *      i. remove both tiles
@@ -102,7 +109,6 @@ export class GameService {
             this.puzzleService.randomlyInsertNewTile();
             if (!self.movesAvailable()) {
                 self.gameState = GameState.GameOver;
-                console.log("Game state: ", self.gameState);
             }
         }
     }
@@ -115,7 +121,49 @@ export class GameService {
             this.highScore = newScore;
             this.puzzleService.setHighScore(newScore);
         }
-    };
+    }
 
+    decSize() {
+        this.puzzleService.saveSize(this.decTileLimit(this.gameSize));
+        console.log("Saved size: ", this.puzzleService.loadSize());
+        this.newGame();
+    }
 
+    incSize() {
+        this.puzzleService.saveSize(this.incTileLimit(this.gameSize));
+        console.log("Saved size: ", this.puzzleService.loadSize());
+        this.newGame();
+    }
+
+    calcTileStyleLimit(): number {
+        if (this.gameSize < 3) {
+            return 6;
+        } else if (this.gameSize < 4) {
+            return 4;
+        } else if (this.gameSize < 5) {
+            return 3;
+        } else if (this.gameSize < 12) {
+            return 2;
+        }
+
+        return 1;
+    }
+
+    private incTileLimit(value: number): number {
+        switch (value){
+            case 2 : return 3;
+            case 3: return 4;
+            case 4: return 6;
+            default: return 12;
+        }
+    }
+
+    private decTileLimit(value: number): number {
+        switch (value){
+            case 12 : return 6;
+            case 6: return 4;
+            case 4: return 3;
+            default: return 2;
+        }
+    }
 }

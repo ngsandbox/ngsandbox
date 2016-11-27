@@ -23,7 +23,7 @@ export class Puzzle2048Service {
     startingTileNumber: number = 2; // default starting tiles
 
     constructor(private keyboadrService: PuzzleKeyboardService){
-
+        this.size = this.loadSize();
     }
 
     // Private things
@@ -34,6 +34,9 @@ export class Puzzle2048Service {
     getSize = (): number => this.size;
 
     buildEmptyGameBoard() {
+        this.tiles = [];
+        this.size = this.loadSize();
+        console.log("Board size: ", this.loadSize());
         this.forEach((pos: Position) => {
             this.setTileAt(pos.clone(), null);
         });
@@ -271,7 +274,7 @@ export class Puzzle2048Service {
     }
 
     loadSize(): number {
-        return Utils.load(Puzzle2048Service.puzzle2048SizeKey, 5);
+        return Utils.load(Puzzle2048Service.puzzle2048SizeKey, 4);
     }
 
     setHighScore(highScore: number) {
