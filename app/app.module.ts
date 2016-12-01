@@ -11,6 +11,7 @@ import {GridMemoryComponent} from "./subapps/grid-memory/grid-memory.component";
 import {MySpinner} from "./spinner/my-spinner.component";
 import {Puzzle2048Component} from "./subapps/2048/puzzle-2048.component";
 import {TilesComponent} from "./subapps/2048/tiles.component";
+import {HammerGesturesDirective} from "./directives/hammer-gestures.directive";
 
 @NgModule({
     declarations: [
@@ -18,6 +19,7 @@ import {TilesComponent} from "./subapps/2048/tiles.component";
         NavComponent,
         HomeComponent,
         MySpinner,
+        HammerGesturesDirective,
         GridMemoryComponent,
         Puzzle2048Component,
         TilesComponent],

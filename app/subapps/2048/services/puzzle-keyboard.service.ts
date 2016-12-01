@@ -41,6 +41,21 @@ export class PuzzleKeyboardService {
         }
     }
 
+    static getEventSwipeCode(swipe: string): string {
+        switch (swipe) {
+            case "swipeleft":
+                return PuzzleKeyboardService.LEFT;
+            case "swipeup":
+                return PuzzleKeyboardService.UP;
+            case "swiperight":
+                return PuzzleKeyboardService.RIGHT;
+            case "swipedown":
+                return PuzzleKeyboardService.DOWN;
+            default:
+                return null;
+        }
+    }
+
     getVectorByKey(key: string): Position {
         return this.vectorsPair[key];
     }

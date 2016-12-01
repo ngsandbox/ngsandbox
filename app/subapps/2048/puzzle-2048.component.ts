@@ -33,25 +33,33 @@ export class Puzzle2048Component implements OnInit, OnDestroy {
         });
     }
 
-    goUp(event: any) {
-        event.preventDefault();
-        this.game.move(PuzzleKeyboardService.UP);
+    doSwipe(direction: string){
+        var self = this;
+        var key = PuzzleKeyboardService.getEventSwipeCode(direction);
+        if (key) {
+            self.game.move(key);
+        }
     }
 
-    goDown(event: any) {
-        event.preventDefault();
-        this.game.move(PuzzleKeyboardService.DOWN);
-    }
-
-    goLeft(event: any) {
-        event.preventDefault();
-        this.game.move(PuzzleKeyboardService.LEFT);
-    }
-
-    goRight(event: any) {
-        event.preventDefault();
-        this.game.move(PuzzleKeyboardService.RIGHT);
-    }
+    // goUp(event: any) {
+    //     event.preventDefault();
+    //     this.game.move(PuzzleKeyboardService.UP);
+    // }
+    //
+    // goDown(event: any) {
+    //     event.preventDefault();
+    //     this.game.move(PuzzleKeyboardService.DOWN);
+    // }
+    //
+    // goLeft(event: any) {
+    //     event.preventDefault();
+    //     this.game.move(PuzzleKeyboardService.LEFT);
+    // }
+    //
+    // goRight(event: any) {
+    //     event.preventDefault();
+    //     this.game.move(PuzzleKeyboardService.RIGHT);
+    // }
 
     ngOnDestroy() {
         event.preventDefault();

@@ -14,6 +14,7 @@ gulp.task('copy:libraries', function () {
         gulp.src('./node_modules/systemjs/dist/system.src.js').pipe(gulp.dest(destPath + '/js/systemjs'));
         gulp.src('./node_modules/bootstrap/dist/**').pipe(gulp.dest(destPath + '/js/bootstrap'));
         gulp.src('./node_modules/jquery/dist/**').pipe(gulp.dest(destPath + '/js/jquery'));
+        gulp.src('./node_modules/hammer-timejs/dist/**').pipe(gulp.dest(destPath + '/js'));
         gulp.src('./node_modules/hammerjs/hammer.min.{js,js.map}').pipe(gulp.dest(destPath + '/js'));
         if (destPath !== '.') {
             //gulp.src('./node_modules/@angular/*/src/**/**.{ts,js,js.map}').pipe(gulp.dest(destPath + '/node_modules/@angular'));

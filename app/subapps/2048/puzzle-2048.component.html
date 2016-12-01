@@ -19,8 +19,7 @@
         <tr>
             <td>
                 <div>
-                    <div class="container-fluid" myTiles2048 (swipedown)="goDown($event)" (swipeup)="goUp($event)"
-                         (swipeleft)="goLeft($event)" (swiperight)="goRight($event)">
+                    <div class="container-fluid" myTiles2048 hammer-gestures (onGesture)="doSwipe($event)">
                     </div>
                 </div>
             </td>
