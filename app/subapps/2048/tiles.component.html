@@ -5,9 +5,9 @@
         <div class="item active">
             <img src="/components/cover.jpg" class="img-responsive"/>
             <div class="carousel-caption">
-                <h1 [ngClass]="{'text-primary': tile?.merged, 'text-success': tile?.value >= game.winningValue}">
+                <span class="textxLarge" [ngClass]="{'text-primary': tile?.merged, 'text-success': tile?.value >= game.winningValue}">
                     {{tile?.value}}
-                </h1>
+                </span>
             </div>
         </div>
     </div>
