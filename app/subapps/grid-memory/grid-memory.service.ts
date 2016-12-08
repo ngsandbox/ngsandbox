@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 import {FileInfo} from "./models/file-info.model";
 import "rxjs/add/operator/toPromise";
-import {Utils} from "./../../utils";
+import {CommonUtils} from "../../utils/common.util";
 
 @Injectable()
 export class GridMemoryService {
@@ -25,12 +25,12 @@ export class GridMemoryService {
 
     private proceedFiles(files: FileInfo[], limit: number): FileInfo[] {
         let result: FileInfo[] = [];
-        let start = Utils.getRandomInt(0, files.length - limit * 2);
-        let end = Utils.getRandomInt(start + limit * 2, files.length);
+        let start = CommonUtils.getRandomInt(0, files.length - limit * 2);
+        let end = CommonUtils.getRandomInt(start + limit * 2, files.length);
         let rest = files.slice(start, end);
         //console.log({ start: start, end: end, rest: rest, length: files.length, limit: limit });
         while (rest.length > 1 && result.length < limit) {
-            let i: number = Utils.getRandomInt(0, rest.length - 1);
+            let i: number = CommonUtils.getRandomInt(0, rest.length - 1);
             let fileInfo: FileInfo = rest[i];
             fileInfo.path = "/components/memory/" + fileInfo.path;
             fileInfo.name = fileInfo.langs[0].value;
@@ -50,19 +50,19 @@ export class GridMemoryService {
     }
 
     setTimeout(sec: number): void {
-        Utils.save(GridMemoryService.gridMemSecondsKey, sec);
+        CommonUtils.save(GridMemoryService.gridMemSecondsKey, sec);
     }
 
     getTimeout(): number {
-        return Utils.load(GridMemoryService.gridMemSecondsKey, 10);
+        return CommonUtils.load(GridMemoryService.gridMemSecondsKey, 10);
     }
 
     setLimit(limit: number) {
-        Utils.save(GridMemoryService.gridMemLimitKey, limit);
+        CommonUtils.save(GridMemoryService.gridMemLimitKey, limit);
     }
 
     getLimit(): number {
-        return Utils.load(GridMemoryService.gridMemLimitKey, 6);
+        return CommonUtils.load(GridMemoryService.gridMemLimitKey, 6);
     }
 
     private static handleError(error: any) {

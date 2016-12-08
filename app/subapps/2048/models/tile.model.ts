@@ -1,4 +1,4 @@
-import {Utils} from "../../../utils";
+import {CommonUtils} from "../../../utils/common.util";
 import {Position} from "./position.model";
 /**
  * Created by Vasilenko on 12-Nov-16.
@@ -14,7 +14,7 @@ export class Tile {
     getValue = (): number => this.value;
 
     constructor(position: Position, private value: number) {
-        this.id = Utils.genUuid();
+        this.id = CommonUtils.genUuid();
         this.setPosition(position);
         this.merged = false;
     }

@@ -22,10 +22,10 @@ export class Puzzle2048Component implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        var self = this;
+        const self = this;
         this.newGame();
         this.globalListenFunc = this.renderer.listenGlobal('document', 'keydown', (event: any) => {
-            var key = PuzzleKeyboardService.getEventKeyCode(event.keyCode);
+            const key = PuzzleKeyboardService.getEventKeyCode(event.keyCode);
             if (key) {
                 event.preventDefault();
                 self.game.move(key);
@@ -34,8 +34,8 @@ export class Puzzle2048Component implements OnInit, OnDestroy {
     }
 
     doSwipe(direction: string){
-        var self = this;
-        var key = PuzzleKeyboardService.getEventSwipeCode(direction);
+        const self = this;
+        const key = PuzzleKeyboardService.getEventSwipeCode(direction);
         if (key) {
             self.game.move(key);
         }

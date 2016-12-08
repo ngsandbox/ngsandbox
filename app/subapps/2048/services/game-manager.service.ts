@@ -6,7 +6,7 @@ import {Puzzle2048Service} from "./puzzle-2048.service";
 import {Position} from "../models/position.model";
 import {Tile} from "../models/tile.model";
 import {GameState} from "../models/game-state.enum";
-import {Utils} from "../../../utils";
+import {CommonUtils} from "../../../utils/common.util";
 
 @Injectable()
 export class GameService {
@@ -38,8 +38,8 @@ export class GameService {
         this.gameSize = this.puzzleService.loadSize();
         this.highScore = this.getHighScore();
         this.tiles = this.puzzleService.tiles;
-        var limit = this.calcTileStyleLimit();
-        this.colClass = Utils.format("col-lg-{0} col-md-{0} col-sm-{0} col-xs-{0}", limit);
+        const limit = this.calcTileStyleLimit();
+        this.colClass = CommonUtils.format("col-lg-{0} col-md-{0} col-sm-{0} col-xs-{0}", limit);
     }
 
 
@@ -64,22 +64,22 @@ export class GameService {
      *      i. move the original tile
      */
     move(key: string) {
-        var self: GameService = this;
+        const self: GameService = this;
         if (self.gameState == GameState.GameOver) {
             return false;
         }
-        var positions = this.puzzleService.traversalDirections(key);
-        var hasMoved = false;
+        const positions = this.puzzleService.traversalDirections(key);
+        let hasMoved = false;
 
         // Update Grid
         this.puzzleService.prepareTilesState();
         positions.x.forEach((x: number) => {
             positions.y.forEach((y: number) => {
-                var originalPosition: Position = new Position(x, y);
-                var currentTile = self.puzzleService.getTileAt(originalPosition);
+                const originalPosition: Position = new Position(x, y);
+                const currentTile = self.puzzleService.getTileAt(originalPosition);
 
                 if (currentTile) {
-                    var cell = self.puzzleService.calculateNextPosition(currentTile.getPosition(), key),
+                    const cell = self.puzzleService.calculateNextPosition(currentTile.getPosition(), key),
                         nextTail = cell.nextTail,
                         nextPos = cell.nextPosition;
 

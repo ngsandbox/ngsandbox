@@ -25,7 +25,9 @@
 
             // other libraries
             'rxjs': 'npm:rxjs',
-            'angular-in-memory-web-api': 'npm:angular2-in-memory-web-api/index.js'
+            'angular-in-memory-web-api': 'npm:angular2-in-memory-web-api/index.js',
+            'Modernizr': 'js/Modernizr.js',
+            'brainjs': '/js/brainjs/brain.js'
         },
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {

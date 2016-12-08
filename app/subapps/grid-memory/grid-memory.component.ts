@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {FileInfo} from "./models/file-info.model";
 import {GridMemoryService} from "./grid-memory.service";
-import {Utils} from "./../../utils";
+import {CommonUtils} from "../../utils/common.util";
 
 const CAPTION: string = "Try to remember the sequence of pictures below";
 
@@ -102,14 +102,14 @@ export class GridMemoryComponent implements OnInit {
 
     calcCardClasses() {
         var count = this.service.calcCardColsCount(this.limit);
-        this.cardClasses = Utils.format(GridMemoryComponent.GridCardColumnClasses, count);
+        this.cardClasses = CommonUtils.format(GridMemoryComponent.GridCardColumnClasses, count);
     }
 
     setNextFile() {
         if (this.restFiles && this.restFiles.length > 0) {
-            var pos = Utils.getRandomInt(0, this.restFiles.length);
+            var pos = CommonUtils.getRandomInt(0, this.restFiles.length);
             this.currentFile = this.restFiles[pos];
-            this.question = Utils.format(this.service.questionTemplate, this.currentFile.name);
+            this.question = CommonUtils.format(this.service.questionTemplate, this.currentFile.name);
         }
     }
 

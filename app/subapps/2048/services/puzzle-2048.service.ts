@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Position} from "../models/position.model";
 import "rxjs/add/operator/toPromise";
-import {Utils} from "../../../utils";
+import {CommonUtils} from "../../../utils/common.util";
 import {Tile} from "../models/tile.model";
 import {PuzzleKeyboardService} from "./puzzle-keyboard.service";
 
@@ -270,18 +270,18 @@ export class Puzzle2048Service {
                 (limit < 25) ? 2 : 1;
 
     saveSize(sz: number) {
-        Utils.save(Puzzle2048Service.puzzle2048SizeKey, sz);
+        CommonUtils.save(Puzzle2048Service.puzzle2048SizeKey, sz);
     }
 
     loadSize(): number {
-        return Utils.load(Puzzle2048Service.puzzle2048SizeKey, 4);
+        return CommonUtils.load(Puzzle2048Service.puzzle2048SizeKey, 4);
     }
 
     setHighScore(highScore: number) {
-        Utils.save(Puzzle2048Service.puzzle2048HighScoreKey, highScore);
+        CommonUtils.save(Puzzle2048Service.puzzle2048HighScoreKey, highScore);
     }
 
     getHighScore(): number {
-        return Utils.load(Puzzle2048Service.puzzle2048HighScoreKey, 0);
+        return CommonUtils.load(Puzzle2048Service.puzzle2048HighScoreKey, 0);
     }
 }

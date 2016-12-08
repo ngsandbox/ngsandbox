@@ -1,6 +1,6 @@
 const MY_NG_SANDBOX_COOKIE_KEY: string = "MY_NG_SANDBOX_OPTIONS";
 
-export class Utils {
+export class CommonUtils {
 
     static getRandomInt(min: number, max: number) {
         return Math.floor(Math.random() * (max - min)) + min;
@@ -9,13 +9,13 @@ export class Utils {
     static format(...args: any[]) {
         // The string containing the format items (e.g. "{0}")
         // will and always has to be the first argument.
-        var theString = args[0];
+        let theString = args[0];
 
         // start with the second argument (i = 1)
-        for (var i = 1; i < args.length; i++) {
+        for (let i = 1; i < args.length; i++) {
             // "gm" = RegEx options for Global search (more than one instance)
             // and for Multiline search
-            var regEx = new RegExp("\\{" + (i - 1) + "\\}", "gm");
+            const regEx = new RegExp("\\{" + (i - 1) + "\\}", "gm");
             theString = theString.replace(regEx, args[i]);
         }
 
@@ -55,12 +55,11 @@ export class Utils {
     static genUuid(): string {
         // http://www.ietf.org/rfc/rfc4122.txt
         // http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript
-        var d = new Date().getTime();
-        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-            var r = (d + Math.random() * 16) % 16 | 0;
+        let d = new Date().getTime();
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            const r = (d + Math.random() * 16) % 16 | 0;
             d = Math.floor(d / 16);
             return (c === 'x' ? r : (r & 0x7 | 0x8)).toString(16);
         });
-        return uuid;
     }
 }
