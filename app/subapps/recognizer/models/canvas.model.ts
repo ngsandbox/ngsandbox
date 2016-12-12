@@ -46,12 +46,12 @@ export class CanvasModel {
         this._canvasOffset = this.getOffsetSum(this.Canvas);
     }
 
-    private getOffsetSum(elem): Offset {
+    private getOffsetSum(elem: HTMLElement): Offset {
         let top = 0, left = 0;
         while (elem) {
-            top = top + parseInt(elem.offsetTop);
-            left = left + parseInt(elem.offsetLeft);
-            elem = elem.offsetParent;
+            top = top + <number>elem.offsetTop;
+            left = left + <number>elem.offsetLeft;
+            elem = <HTMLElement>elem.offsetParent;
         }
 
         return {top: top, left: left}

@@ -56,7 +56,7 @@ export class ImageUtils {
      * resizing and translating is better done with the canvas functions
      */
     static imageDataToGrayscale(imgData: ImageData): number[][] {
-        const grayscaleImg = [];
+        const grayscaleImg: number[][] = [];
         for (let y = 0; y < imgData.height; y++) {
             grayscaleImg[y] = [];
             for (let x = 0; x < imgData.width; x++) {

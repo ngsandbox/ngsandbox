@@ -1,34 +1,22 @@
-import {Injectable} from '@angular/core';
-import {Http} from "@angular/http";
+import {Injectable} from "@angular/core";
+
+declare let nn: any;
+
 
 @Injectable()
 export class NNService {
 
-    net: any;
-    initialized: boolean = false;
 
-    constructor(private http: Http) {
-        let nn = require('brainjs');
-        //json = require('json!/components/recognizer/mnistTrain.json');
-        this.http.get("/components/recognizer/mnistTrain.json")
-            .toPromise()
-            .then(response => {
-                let json = <any>response.json();
-                console.log(nn.NeuralNetwork);
-                this.net = new nn.NeuralNetwork();
-                this.net.fromJSON(json);
-                this.initialized = true;
-            })
-            .catch(err => console.log("Error receiving training set", err));
+    constructor() {
     }
 
-    nn(input) {
-        let output = this.net.run(input);
-
-        return this.softmax(output);
+    recognoze(input: number[]): number[] {
+        console.log(nn, input);
+        let brainResult: number[] = nn(input);
+        return this.softmax(brainResult);
     }
 
-    private softmax(output): number[] {
+    softmax(output: number[]) {
         const maximum = output.reduce(function (p, c) {
             return p > c ? p : c;
         });
@@ -50,13 +38,10 @@ export class NNService {
             } else return p;
         });
 
-        const result: number[] = [];
+        const result = new Array(output.length);
 
         for (let i = 0; i < output.length; i++) {
-            if (i == maxIndex)
-                result.push(1);
-            else
-                result.push(0);
+            result[i] = (i == maxIndex) ? 1 : 0;
         }
 
         return result;

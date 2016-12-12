@@ -1,13 +1,14 @@
 <div id="container" class="container-fluid">
     <div class="row">
-        <h1>Recognizing hand-written digits from MNIST dataset with Brain.js. Neural Networks live example.</h1>
+        <h3>Recognizing hand-written digits from MNIST dataset with Brain.js. Neural Networks live example.</h3>
         <p>
             Draw a digit in the box below and click the "recognize" button.
         </p>
     </div>
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
             <canvas #sketchpad
+                    class="img-thumbnail"
                     (touchstart)="draw($event)"
                     (touchmove)="draw($event)"
                     (touchend)="draw($event)"
@@ -17,11 +18,19 @@
                     width="280" height="280">Sorry, your browser is not supported.
             </canvas>
         </div>
-        <div class="col-lg-3">
-            <canvas #thumbnail width="28" height="28">Sorry, your browser is not supported.</canvas>
-        </div>
-        <div class="col-lg-3">
-            {{ result }}
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <canvas #thumbnail
+                        class="img-thumbnail"
+                        width="28"
+                        height="28">Sorry, your browser is not supported.
+                </canvas>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h1>
+                    {{ drawerService.result }}
+                </h1>
+            </div>
         </div>
     </div>
 </div>

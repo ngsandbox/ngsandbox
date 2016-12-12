@@ -5,7 +5,7 @@ const gulp = require('gulp');
 const del = require('del');
 const browserify = require('gulp-browserify');
 
-// Basic usage
+// Basic usage of browserify
 gulp.task('browser', function () {
     // Single entry point to browserify
     gulp.src('./node_modules/brain.js/lib/brain.js')
@@ -21,7 +21,7 @@ gulp.task('browser', function () {
 });
 
 
-gulp.task('default', ['browser', 'copy:libraries']);
+gulp.task('default', ['copy:libraries']);
 
 
 gulp.task('copy:libraries', function () {
@@ -35,12 +35,8 @@ gulp.task('copy:libraries', function () {
         gulp.src('./node_modules/jquery/dist/**').pipe(gulp.dest(destPath + '/js/jquery'));
         gulp.src('./node_modules/hammer-timejs/dist/**').pipe(gulp.dest(destPath + '/js'));
         gulp.src('./node_modules/hammerjs/hammer.min.{js,js.map}').pipe(gulp.dest(destPath + '/js'));
-        gulp.src('./node_modules/requirejs/require.js').pipe(gulp.dest(destPath + '/js'));
-        //gulp.src('./node_modules/modernizr/src/**.{js,js.map}').pipe(gulp.dest(destPath + '/js/modernizr'));
 
         if (destPath !== '.') {
-            gulp.src('./js/brainjs/**').pipe(gulp.dest(destPath + '/js/brainjs'));
-            gulp.src('./js/Modernizr.js').pipe(gulp.dest(destPath + '/js'));
             gulp.src('./components/**').pipe(gulp.dest(destPath + '/components'));
         }
     }
