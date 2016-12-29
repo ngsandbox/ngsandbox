@@ -25,7 +25,6 @@ export class RecognizerComponent implements OnInit, AfterViewInit {
     }
 
     ngOnDestroy() {
-        event.preventDefault();
         while (this.globalListenFuncs.length > 0) {
             this.globalListenFuncs.pop()();
         }
@@ -33,6 +32,7 @@ export class RecognizerComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit() {
         let self = this;
+        let s: MouseEvent
         this.globalListenFuncs.push(this.renderer.listenGlobal('document', 'keydown', (event: any) => {
             event.preventDefault();
         }));
