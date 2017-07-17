@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, OnDestroy} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Subscription} from "rxjs/RX";
+import {Subscription} from "rxjs/Subscription";
 import {TeamService} from "../services/team.service";
 import {IPlayer} from "../model/IPlayer";
 

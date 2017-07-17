@@ -6,11 +6,11 @@ export function regPlayersApi(app: express.Express) {
     /* Create or save */
     app.put('/api/player/:id?', function (req, res) {
         console.log("Received player: ", req.body, req.params.id);
-        var newPlayer = new Player(req.body);
+        const newPlayer = new Player(req.body);
         if (req.params.id) {
             // Convert the Model instance to a simple object using Model's 'toObject' function
             // to prevent weirdness like infinite looping...
-            var upsertData: any = newPlayer.toObject();
+            const upsertData: any = newPlayer.toObject();
 
             // Delete the _id property, otherwise Mongo will return a "Mod on _id not allowed" error
             delete upsertData._id;
@@ -48,7 +48,7 @@ export function regPlayersApi(app: express.Express) {
     });
 
     app.delete('/api/player/:id', function (req, res) {
-        var query = { _id: req.params.id };
+        const query = {_id: req.params.id};
         Player.remove(query, function (err) {
             if (err) {
                 res.json({ info: 'error during find player', error: err });
@@ -61,7 +61,7 @@ export function regPlayersApi(app: express.Express) {
     });
 
     app.get('/api/player/:id', function (req, res) {
-        var query = { _id: req.params.id };
+        const query = {_id: req.params.id};
         Player.findOne(query, function (err, player) {
             if (err) {
                 res.json({ info: 'error during find player', error: err });

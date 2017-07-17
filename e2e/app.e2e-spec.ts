@@ -10,7 +10,7 @@ describe('QuickStart E2E Tests', function () {
     });
 
     it('should display: ' + expectedMsg, function () {
-        expect(element(by.css('h1')).getText()).toEqual(expectedMsg);
+        element(by.css('h1')).getText().then(t => expect(t).toEqual(expectedMsg));
     });
 
 });
