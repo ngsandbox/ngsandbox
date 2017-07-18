@@ -26,7 +26,8 @@
 
             // other libraries
             'rxjs': 'npm:rxjs',
-            'angular-in-memory-web-api': 'npm:angular2-in-memory-web-api/index.js'
+            'angular-in-memory-web-api': 'npm:angular2-in-memory-web-api/index.js',
+            'chart.js': "npm:chart.js/dist/Chart.bundle.js"
         },
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {

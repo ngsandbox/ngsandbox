@@ -34,6 +34,7 @@ gulp.task('copy:libraries', function () {
         gulp.src('./node_modules/bootstrap/dist/**').pipe(gulp.dest(destPath + '/js/bootstrap'));
         gulp.src('./node_modules/jquery/dist/**').pipe(gulp.dest(destPath + '/js/jquery'));
         gulp.src('./node_modules/hammer-timejs/dist/**').pipe(gulp.dest(destPath + '/js'));
+        gulp.src('./node_modules/chart.js/dist/Chart.bundle.js').pipe(gulp.dest(destPath + '/js'));
         gulp.src('./node_modules/hammerjs/hammer.min.{js,js.map}').pipe(gulp.dest(destPath + '/js'));
 
         if (destPath !== '.') {
